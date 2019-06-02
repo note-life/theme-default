@@ -1,0 +1,56 @@
+.note-item{
+    position: relative;
+    margin: 1rem 0;
+    border-bottom: #ebf2f6 1px solid;
+
+    .title{
+        margin: .36rem 0;
+        font-size: .62rem;
+        
+        a{
+            color: var(--secondColor);
+
+            &:hover{
+                color: var(--primaryColor);
+            }
+        }
+    }
+
+    .summary{
+        margin: .2rem 0 .2rem;
+    }
+
+    .read-more{
+        margin: .6rem auto .8rem;
+        padding: 0;
+        display: block;
+        width: 2rem;
+        height: .6rem;
+        line-height: .6rem;
+        font-weight: 600;
+        text-align: center;
+        color: var(--secondColor);
+        border: .02rem solid var(--secondColor);;
+        border-radius: 2px;
+
+        &:hover{
+            color: #fff;
+            background: var(--secondColor);
+        }
+    }
+
+    &:after{
+        display: block;
+        content: "";
+        width: 7px;
+        height: 7px;
+        border: #E7EEF2 1px solid;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        margin-left: -5px;
+        background: #FFF;
+        border-radius: 100%;
+        box-shadow: #fff 0 0 0 5px;
+    }
+}

@@ -1,0 +1,49 @@
+.notes-page{
+    .site-info{
+        margin: 2.4rem 0 0;
+        display: flex;
+        justify-content: space-around;
+
+        & > h1{
+            display: flex;
+            align-items: center;
+
+            i{
+                margin: 0 .2rem 0 0;
+                font-size: .6rem;
+            }
+        }
+    }
+
+    .associated-links{
+        margin: .32rem 0 0;
+
+        a{
+            display: inline-block;
+            margin: 0 .2rem;
+            width: .7rem;
+            height: .7rem;
+            line-height: .7rem;
+
+            &:hover i{
+                color: #fff;
+                background: var(--secondColor);
+                transform: rotateY(360deg);
+            }
+        }
+
+        i{
+            display: inline-block;
+            width: .56rem;
+            height: .56rem;
+            font-size: .3rem;
+            line-height: .56rem;
+            border-radius: 1rem;
+            color: var(--secondColor);
+            background: #fff;
+            transition: transform .62s ease;
+        }
+    }
+
+
+}

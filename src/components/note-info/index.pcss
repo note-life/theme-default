@@ -1,0 +1,99 @@
+.note-info{
+    margin: .3rem 0;
+    font-size: 0;
+
+    & > .row{
+        display: flex;
+
+        & > div{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+
+    .avator{
+        display: block;
+        margin: 0 .2rem 0 0;
+        width: 0.72rem;
+        height: 0.72rem;
+        border-radius: 0.36rem;
+        box-shadow: 0.01rem 0.01rem 0.1rem rgba(0, 0, 0, .2);
+    }
+
+    .nickname{
+        font-size: .3rem;
+        font-weight: 700;
+        text-align: left;
+        cursor: default;
+    }
+
+    .times{
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    time{
+        position: relative;
+        font-size: .2rem;
+        cursor: default;
+
+        &:after{
+            display: none;
+            position: absolute;
+            content: attr(data-title);
+            left: -50%;
+            background: #fff;
+            padding: .1rem;
+            width: 3rem;
+            color: #333;
+            border-radius: 2px;
+            z-index: 999;
+            box-shadow: 0.01rem 0.01rem 0.1rem rgba(0, 0, 0, .2);
+        }
+
+        &:hover:after{
+            display: block;
+        }
+    }
+
+    .tags-archive{
+        display: flex;
+        align-items: center;
+        margin: .3rem 0 .2rem;
+
+        & > div{
+            display: block;
+            margin: 0 .42rem 0 0;
+        }
+
+        i{
+            margin: 0 .04rem 0 0;
+            color: #999;
+        }
+
+        a{
+            color: #999;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+        .tags > a{
+            display: inline-block;
+            margin: 0 .2rem 0 0;
+            padding: .03rem .14rem;
+            border-radius: .04rem;
+            color: #666;
+            border: 1px solid #eee;
+            text-decoration: none;
+
+            &:hover{
+                background: var(--secondColor);
+                color: #fff;
+                border-color: var(--secondColor);
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+header.global-header{
+    position: relative;
+    /* margin: 20vh 0 0; */
+    width: 100vw;
+    height: 55vh;
+    background-color: var(--primaryColor);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 0px;
+    background-attachment: fixed;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+
+    .content{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        & > h1.title{
+            font-size: 1rem;
+
+            i{
+                margin: 0 .2rem 0 0;
+                font-size: .88rem;
+            }
+        }
+    }
+
+    &:after{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: "";
+        background: rgba(0, 0, 0, .1);
+        z-index: 1;
+    }
+}

@@ -1,0 +1,101 @@
+.note-page{
+    .note-info{
+        position: absolute;
+    }
+
+    .note-title{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 2rem;
+        left: 0;
+        margin: auto;
+        padding: 0 .2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 1.2rem;
+    }
+}
+
+.note-info-wrapper{
+    position: relative;
+    margin: 0 auto;
+    padding: 0 .3rem 0;
+    width: 100%;
+    height: 100%;
+    max-width: 16rem;
+    min-height: 4rem;
+    text-align: center;
+
+    .note-info{
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+    }
+
+    .note-info .tags-archive a{
+        color: #fff;
+    }
+
+    .note-info .tags-archive i{
+        color: #333;
+    }
+}
+
+.article-nav{
+    margin: 1rem 0 0;
+    position: relative;
+    border-top: #ebf2f6 1px solid;
+
+    & > a{
+        margin: .6rem 0;
+        font-size: .28rem;
+    }
+
+    .prev{
+        float: left;
+
+        i{
+            margin: 0 .1rem 0 0;
+        }
+    }
+
+    .next{
+        float: right;
+
+        i{
+            margin: 0 0 0 .1rem;
+        }
+    }
+
+    &:after{
+        display: block;
+        content: "";
+        width: 7px;
+        height: 7px;
+        border: #E7EEF2 1px solid;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        margin-left: -5px;
+        background: #FFF;
+        border-radius: 100%;
+        box-shadow: #fff 0 0 0 5px;
+        clear: both;
+    }
+}
+
+header.global-header .back-menu{
+    left: .3rem;
+    right: auto;
+    color: #fff;
+}
+
+@media (max-width: 560px) {
+    .note-page{
+        .note-title{
+            font-size: .68rem;
+        }
+    }
+}

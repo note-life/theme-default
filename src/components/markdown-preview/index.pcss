@@ -1,0 +1,121 @@
+@import 'prismjs/themes/prism.css';
+
+.markdown-preview{
+    color: #666;
+    font-size: .24rem;
+    line-height: 2;
+    font-family: monospace;
+    box-sizing: border-box;
+
+    h1, h2, h3, h4, h5, h6{line-height: 1;}
+
+    h1 { font-size: .64rem; margin-top: 0; }
+    h2 { font-size: .52rem; margin-top: .62rem; position: relative; }
+    h3 { font-size: .4rem; }
+    h4 { font-size: .32rem; }
+    h5 { font-size: .28rem; }
+    h6 { font-size: .24rem; }
+
+    h2:after{
+        display: none;
+        position: absolute;
+        content: "#";
+        top: .24rem;
+        bottom: 0;
+        left: -.4rem;
+        margin: auto;
+        color: #ee7b83;
+    }
+
+    h2:hover:after{
+        display: block;
+    }
+
+    h1, h2{
+        padding: .24rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    a{
+        color: #ee7b83;
+    }
+
+    p{
+        margin: .16rem 0;
+        line-height: 1.6;
+    }
+
+    p code{
+        padding: 1px 3px;
+        background: rgba(166, 60, 111, 0.06);
+        color: rgba(166, 60, 111, 1);
+        border-radius: 3px;
+    }
+
+    ul{
+        padding-left: .6rem;
+    }
+
+    pre{
+        padding: .12rem;
+        border: 2px dashed #e4f0f5;
+        border-radius: 3px;
+        box-sizing: border-box;
+        overflow: auto;
+        background: rgba(245, 242, 240, 0.28);
+    }
+
+    blockquote{
+        margin: .12rem 0;
+        padding: .3rem 0 .3rem .32rem;
+        border-left: 3px solid #ee7b83;
+        background: rgb(255, 252, 252);
+    }
+
+    .emojione{
+        margin: 0 2px;
+        box-shadow: none;
+        border-radius: none;
+    }
+
+    .self-emoji{
+        margin: 0 2px;
+        max-width: 64px;
+        box-shadow: none;
+        border-radius: none;
+    }
+
+    .n-img{
+        text-align: center;
+
+        & > img{
+            max-width: 100%;
+            margin: 10px 0 0;
+            max-width: 100%;
+            vertical-align: text-bottom;
+            border-radius: 3px;
+            box-shadow: 0 0 .1rem #9e9e9e;
+        }
+
+        &.no-shadow img{
+            box-shadow: none;
+        }
+
+        & > p{
+            margin: 0 0 40px;
+            text-align: center;
+            color: #d4d4d4;
+        }
+    }
+
+    table, tr, td, th{
+        padding: .2rem .3rem;
+        border-collapse: collapse;
+        border: 1px solid #eee;
+        border-radius: 3px;
+    }
+
+    table thead{
+        background: rgba(244, 244, 244, 0.77);
+    }
+}

@@ -1,0 +1,82 @@
+.friend-links-page{
+    header.global-header{
+        background-color: #a6ab99;
+    }
+
+    .links{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -.4rem;
+    }
+
+    .link-item{
+        display: block;
+        margin: .32rem .4rem;
+        width: 4rem;
+        border-radius: 3px;
+        text-align: center;
+        box-shadow: 0 1px 4px #c7c7c7;
+        transition: all .32s ease;
+
+        &:hover{
+            box-shadow: 0 1px 16px #c7c7c7;
+        }
+
+        .img{
+            position: relative;
+            width: 4rem;
+            height: 4rem;
+            overflow: hidden;
+        }
+
+        img{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 100%;
+        }
+
+        h1{
+            font-size: .32rem;
+        }
+    }
+}
+
+
+@media (max-width: 560px) {
+    
+    .friend-links-page .links{
+        display: block;
+        flex-direction: row;
+        margin: 0;
+    }
+
+    .friend-links-page .link-item{
+        display: flex;
+        align-items: center;
+        margin: .8rem 0;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        text-align: left;
+
+        &:hover{
+            box-shadow: none;
+        }
+
+        .img{
+            display: inline-block;
+            margin: 0 .2rem 0 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 1rem;
+        }
+    }
+
+    .friend-links-page .links{
+        justify-content: center;
+    }
+}

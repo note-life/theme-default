@@ -1,0 +1,45 @@
+.archive-page{
+    header.global-header{
+        background-color: #924547;
+    }
+
+    section{
+        & > h1{
+            margin: .4rem 0 0;
+            position: relative;
+            font-size: .48rem;
+            color: var(--primaryColor);
+
+            &:after{
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 1.4rem;
+                margin: auto;
+                height: 0;
+                border: 1px dashed #ccc;
+            }
+        }
+
+        & > p{
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: .3rem .2rem;
+            border-radius: 4px;
+            transition: all .32s ease;
+            font-size: .24rem;
+
+            a{
+                color: #666;
+                outline: none;
+
+                &:hover{
+                    color: var(--secondColor)
+                }
+            }
+        }
+    }
+}
