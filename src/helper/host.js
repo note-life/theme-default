@@ -1,1 +1,1 @@
-export default 'http://localhost:4533'
+export default 'https://note-api.hxtao.xyz'
