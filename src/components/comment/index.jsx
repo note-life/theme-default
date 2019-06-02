@@ -3,7 +3,7 @@ import { DiscussionEmbed, CommentCount } from 'disqus-react';
 import './index.pcss';
 
 const Comment = (props) => {
-    const disqusShortname = 'shi-yu-xia-mo-note';
+    const disqusShortname = 'your_disqus_shortname';
     const disqusConfig = {
         url:  location.href,
         identifier: location.pathname,
