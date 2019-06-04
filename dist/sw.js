@@ -71,7 +71,7 @@ workbox.routing.registerRoute(
  * 适用于防止恶意调用 api
  */
 workbox.routing.registerRoute(
-    new RegExp('^https:\/\/note-api.hxtao.xyz'),
+    new RegExp('^https:\/\/note-api\.hxtao\.xyz'),
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'cross-domain-cache',
         plugins: [
@@ -93,7 +93,7 @@ workbox.routing.registerRoute(
  * 离线缓存的能力
  */
 workbox.routing.registerRoute(
-    new RegExp('^https:\/\/note-manage.hxtao.xyz$'),
+    new RegExp('^https:\/\/note\.hxtao\.xyz$'),
     new workbox.strategies.NetworkFirst()
 );
 
