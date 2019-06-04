@@ -42,8 +42,12 @@ class API {
     /**
      * 获取归档
      */
-    static async fetchArchive(pageNo = 1) {
-        const res = await getData('/notes', { pageSize: 20, pageNo });
+    static async fetchArchive(pageNo = 1, pageSize = 10) {
+        const params = {
+            limit: pageSize,
+            offset:  pageSize * (pageNo - 1)
+        };
+        const res = await getData('/notes', params);
 
         if (res.error) {
             console.log(res.error);

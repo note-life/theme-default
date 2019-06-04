@@ -44,7 +44,9 @@ const ArchivePage = () => {
      * 下拉加载
      */
     const scrollHandler = () => {
-        if (notes && total > notes.length && !loading) {
+        const { scrollY } = window;
+
+        if (document.documentElement.clientHeight + scrollY > document.body.scrollHeight - 200) {
             fetchArchive(pageNo + 1);
         }
     };
@@ -54,16 +56,19 @@ const ArchivePage = () => {
      * @param {Number} pageNo 
      */
     const fetchArchive = async (pageNo = 1) => {
+
+        if ((notes && total <= notes.length)|| loading) return;
+
         setLoading(true);
         pageProgress.start();
-        const res = await API.fetchArchive();
+        const res = await API.fetchArchive(pageNo);
         pageProgress.done()
 
         setLoading(false);
         setData({
             total: res.total || 0,
             pageNo: pageNo,
-            notes: (notes || []).concat(res.notes || [])
+            notes: pageNo === 1 ? res.notes || [] : (notes || []).concat(res.notes || [])
         });
     };
 
@@ -77,7 +82,7 @@ const ArchivePage = () => {
         return () => {
             window.removeEventListener('scroll', scrollHandler, false);
         }
-    }, true);
+    }, null);
 
     document.title = localStorage.getItem('title') || 'NOTE.LIFE';
 
