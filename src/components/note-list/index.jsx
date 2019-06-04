@@ -16,7 +16,9 @@ const NoteList = ({ query }) => {
      * 下拉加载
      */
     const scrollHandler = () => {
-        if (notes && total > notes.length && !loading) {
+        const { scrollY } = window;
+
+        if (document.documentElement.clientHeight + scrollY > document.body.scrollHeight - 200) {
             fetchNotes(pageNo + 1);
         }
     };
@@ -26,6 +28,9 @@ const NoteList = ({ query }) => {
      * @param {Number} pageNo 
      */
     const fetchNotes = async (pageNo = 1) => {
+
+        if ((notes && total <= notes.length)|| loading) return;
+
         setLoading(true);
 
         pageProgress.start();
@@ -54,7 +59,7 @@ const NoteList = ({ query }) => {
         return () => {
             window.removeEventListener('scroll', scrollHandler, false);
         }
-    }, true);
+    }, null);
 
     if (params.tags && params.tags !== getUrlParams().tags) {
         fetchNotes(1);

@@ -26,7 +26,7 @@ const NotePage = (props) => {
         fetchNote();
     }, props.match.params.id);
 
-    document.title = localStorage.getItem('title') || 'NOTE.LIFE';
+    document.title = note.title + '・' + (localStorage.getItem('title') || 'NOTE.LIFE');
 
     return (
         <Layout className="note-page">
