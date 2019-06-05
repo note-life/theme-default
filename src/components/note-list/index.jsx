@@ -1,5 +1,6 @@
 import React, { useState, useEffect, PureComponent } from 'react';
 import NoteItem from '@components/note-item';
+import Loading from '@components/loading';
 import pageProgress from '@components/page-progress';
 
 import API from '@api';
@@ -66,7 +67,16 @@ const NoteList = ({ query }) => {
         setParams(getUrlParams());
     }
 
-    return notes && notes.length ? notes.map(note => <NoteItem key={note._id} {...note} />) : <div className="empty">暂无文章</div>
+    return notes && notes.length
+        ? (
+        <>
+            {
+                notes.map(note => <NoteItem key={note._id} {...note} />) 
+            }
+            <Loading visible={loading} />
+        </>
+        )
+        : <div className="empty">暂无文章</div>
 };
 
 NoteList.defaultProps = {

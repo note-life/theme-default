@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@components/layout';
+import Loading from '@components/loading';
 import pageProgress from '@components/page-progress';
 import API from '@api';
 import CONFIG from '@config';
@@ -105,6 +106,7 @@ const ArchivePage = () => {
                         </section>
                     ))
                 }
+                <Loading visible={loading} />
             </Content>
         </Layout>
     );
