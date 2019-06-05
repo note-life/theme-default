@@ -20,9 +20,9 @@ const NotePage = (props) => {
             pageProgress.start();
             setNoteData((await API.fetchNote(props.match.params.id)));
             pageProgress.done();
+            window.scrollTo(0, 0);
         };
 
-        window.scrollTo(0, 0);
         fetchNote();
     }, props.match.params.id);
 
