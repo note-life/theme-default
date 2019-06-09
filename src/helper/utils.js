@@ -79,7 +79,7 @@ const dateDesc = (date) => {
         return `${Math.floor(dur / 1000 / 60 / 60 / 24)} 天前`;
     }
 
-    if (dur < 1000 * 60 * 60 * 24 * 30 * 24) {
+    if (dur < 1000 * 60 * 60 * 24 * 365) {
         return `${Math.floor(dur / 1000 / 60 / 60 / 24 / 30 )} 月前`;
     }
 
