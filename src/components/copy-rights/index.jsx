@@ -3,7 +3,6 @@ import './index.pcss';
 
 const CopyRights = (props) => {
     useEffect(() => {
-        console.log('render');
         const script = document.createElement('script');
 
         script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
