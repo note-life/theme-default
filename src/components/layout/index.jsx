@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from '@components/nav';
 import Header from '@components/header';
 import CopyRights from '@components/copy-rights';
+import ToTop from '@components/to-top';
 import './index.pcss';
 
 const Layout = ({ children, className, navLess }) => {
@@ -13,6 +14,7 @@ const Layout = ({ children, className, navLess }) => {
             {!navLess && <Nav />}
             {children}
             <CopyRights />
+            <ToTop />
             <div className="off-footer">我是有底线 <i className="iconfont icon-off-footer"></i></div>
         </>
     );
