@@ -19,11 +19,11 @@ const NotePage = (props) => {
         const fetchNote = async () => {
             pageProgress.start();
 
-            const note = await API.fetchNote(props.match.params.id);
+            const data = await API.fetchNote(props.match.params.id);
 
             pageProgress.done();
-            setNoteData(note);
-            document.title = note.title + '・' + (localStorage.getItem('title') || 'NOTE.LIFE');
+            setNoteData(data);
+            document.title = data && data.note && data.note.title + '・' + (localStorage.getItem('title') || 'NOTE.LIFE');
             window.scrollTo(0, 0);
         };
 
