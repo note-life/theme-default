@@ -18,15 +18,17 @@ const NotePage = (props) => {
     useEffect(() => {
         const fetchNote = async () => {
             pageProgress.start();
-            setNoteData((await API.fetchNote(props.match.params.id)));
+
+            const note = await API.fetchNote(props.match.params.id);
+
             pageProgress.done();
+            setNoteData(note);
+            document.title = note.title + '・' + (localStorage.getItem('title') || 'NOTE.LIFE');
             window.scrollTo(0, 0);
         };
 
         fetchNote();
     }, props.match.params.id);
-
-    document.title = note.title + '・' + (localStorage.getItem('title') || 'NOTE.LIFE');
 
     return (
         <Layout className="note-page">
