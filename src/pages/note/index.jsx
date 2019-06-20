@@ -20,7 +20,6 @@ const NotePage = (props) => {
         const target = e.target;
 
         if (target.tagName === 'IMG' && target.getAttribute('alt') !== 'emoji') {
-            console.log('显示大图', target.getAttribute('src'));
             setBigImg(target.getAttribute('src'));
         }
     };
