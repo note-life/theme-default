@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@components/layout';
+import ImgModal from '@components/img-modal';
 import MarkdownPreview from '@components/markdown-preview';
 import NoteInfo from '@components/note-info';
 import Comment from '@components/comment';
@@ -14,6 +15,19 @@ const { Header, Content } = Layout;
 
 const NotePage = (props) => {
     const [ { prev, note = {}, next }, setNoteData ] = useState({});
+    const [ bigImg, setBigImg ] = useState(null);
+    const handleClick = (e) => {
+        const target = e.target;
+
+        if (target.tagName === 'IMG' && target.getAttribute('alt') !== 'emoji') {
+            console.log('显示大图', target.getAttribute('src'));
+            setBigImg(target.getAttribute('src'));
+        }
+    };
+
+    const handleClose = () => {
+        setBigImg(null);
+    };
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -39,13 +53,16 @@ const NotePage = (props) => {
                 </div>
             </Header>
             <Content>
-                <MarkdownPreview text={note.content} />
+                <MarkdownPreview onClick={handleClick} text={note.content} />
                 <div className="article-nav">
                     {prev && <Link to={`/notes/${prev._id}`} className="prev"><i className="iconfont icon-prev"></i>{prev.title}</Link>}
                     {next && <Link to={`/notes/${next._id}`} className="next">{next.title}<i className="iconfont icon-next"></i></Link>}
                 </div>
                 <Comment title={note.title} />
             </Content>
+            <ImgModal visible={!!bigImg} url={bigImg} onClose={handleClose}>
+                <img src={bigImg} alt="bigImg" />
+            </ImgModal>
         </Layout>
     );
 };
