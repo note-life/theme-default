@@ -1,9 +1,6 @@
 import { param2string } from './utils';
 import HOST from './host';
 
-console.log(HOST)
-
-
 /**
  * POST
  * @param {String} url 
