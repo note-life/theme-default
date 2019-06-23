@@ -6,6 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack/webpack.dev.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack/webpack.prod.js",
+    "analyze": "rm -rf dist && NODE_ENV=production webpack --analyze --config webpack/webpack.prod.js",
     "static:server": "node ./tools/static-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,6 +39,7 @@
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.31.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1",
     "webpack-merge": "^4.2.1",
