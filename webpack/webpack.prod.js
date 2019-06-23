@@ -3,8 +3,10 @@ const baseWebpackConfig = require('./webpack.base');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HTMLPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = merge(baseWebpackConfig, {
+
+const prodWebpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
     devtool: 'none',
     module: {
@@ -39,12 +41,26 @@ module.exports = merge(baseWebpackConfig, {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
             },
-            chunks: ['app', '//react.js'],
-            chunksSortMode: 'dependency'
+            chunks: ['app', 'vendors']
         })
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name: 'vendors'
+        },
+        // runtimeChunk: {
+        //     name: 'runtime'
+        // }
+    }
     // externals: {
     //     "react": 'window.React',
     //     "react-dom": 'window.ReactDOM'
     // }
 });
+
+if (process.env.npm_lifecycle_event === 'analyze') {
+    prodWebpackConfig.plugins.push(new BundleAnalyzerPlugin());
+}
+
+module.exports = prodWebpackConfig;
