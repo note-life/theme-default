@@ -5,6 +5,7 @@ import ImgModal from '@components/img-modal';
 import MarkdownPreview from '@components/markdown-preview';
 import NoteInfo from '@components/note-info';
 import Comment from '@components/comment';
+import ExpirationPrompt from '@components/expiration-prompt';
 import pageProgress from '@components/page-progress';
 
 import API from '@api';
@@ -52,6 +53,7 @@ const NotePage = (props) => {
                 </div>
             </Header>
             <Content>
+                <ExpirationPrompt {...note} />
                 <MarkdownPreview onClick={handleClick} text={note.content} />
                 <div className="article-nav">
                     {prev && <Link to={`/notes/${prev._id}`} className="prev"><i className="iconfont icon-prev"></i>{prev.title}</Link>}

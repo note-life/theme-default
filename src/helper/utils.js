@@ -89,6 +89,7 @@ const dateDesc = (date) => {
 
     return formatDate(date);
 
-}
+};
+
 
 export { getUrlParams, param2string, formatDate, isEmail, getPicUrl, randomNum, dateDesc };

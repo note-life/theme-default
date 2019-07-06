@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@components/layout';
 import pageProgress from '@components/page-progress';
 import CONFIG from '@config';
-import { getData } from '@helper/fetch';
 import API from '@api';
 
 import './index.pcss';
