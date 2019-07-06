@@ -65,7 +65,7 @@ class API {
 
         if (res.error) {
             console.log(res.error);
-            return {};
+            return [];
         }
 
         return res[0] && res[0].options;
