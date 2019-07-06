@@ -1,4 +1,4 @@
-importScripts("/precache-manifest.d99acf2cb84d592473840c14791a2487.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.dcaba2f6761937ed2cf154d9d9083c0e.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 
 /**
@@ -71,7 +71,7 @@ workbox.routing.registerRoute(
  * 适用于防止恶意调用 api
  */
 workbox.routing.registerRoute(
-    new RegExp('^https:\/\/note-api.hxtao.xyz'),
+    new RegExp('^https:\/\/note-api\.hxtao\.xyz'),
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'cross-domain-cache',
         plugins: [
@@ -93,7 +93,7 @@ workbox.routing.registerRoute(
  * 离线缓存的能力
  */
 workbox.routing.registerRoute(
-    new RegExp('^https:\/\/note-manage.hxtao.xyz$'),
+    new RegExp('^https:\/\/note\.hxtao\.xyz$'),
     new workbox.strategies.NetworkFirst()
 );
 
