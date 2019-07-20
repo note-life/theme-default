@@ -36,6 +36,11 @@ const NotePage = (props) => {
             const data = await API.fetchNote(props.match.params.id);
 
             pageProgress.done();
+
+            if (!data.note) {
+                props.history.push('/404');
+            }
+
             setNoteData(data);
             document.title = data && data.note && data.note.title + '・' + (localStorage.getItem('title') || 'NOTE.LIFE');
             window.scrollTo(0, 0);

@@ -5,8 +5,6 @@ import './index.pcss';
 const ExpirationPrompt = ({ updateTime, tags, archive }) => {
     const dur = Date.now() - (new Date(updateTime)).getTime();
 
-    console.log(dateDesc(updateTime), archive)
-
     if (dur <  1000 * 60 * 60 * 24 * 365 * 0.5 || !updateTime || ['生活', 'life', '随笔', '情感', '其它'].includes(archive)) return null;
 
     return  (
