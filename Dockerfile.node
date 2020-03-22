@@ -1,0 +1,11 @@
+# FROM node:alpine
+
+# WORKDIR /app
+
+# COPY ./dist /app/dist
+
+# COPY ./static-server /app
+
+# EXPOSE 4002
+
+# CMD node index.js

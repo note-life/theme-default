@@ -1,12 +1,11 @@
-FROM node:12
+FROM nginx:alpine
 
-WORKDIR /app
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-COPY ./dist /app
+COPY ./dist /www
 
-RUN npm i -g http-server --registry=https://registry.npm.taobao.org
+EXPOSE 80
 
-EXPOSE 4002
+STOPSIGNAL SIGTERM
 
-CMD [ "http-server" "/app -p 4002"]
-
+CMD ["nginx", "-g", "daemon off;"]
