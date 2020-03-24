@@ -5,19 +5,19 @@ import './index.pcss';
 
 const emojis = [
     {
-        img: '//note-cdn.hxtao.xyz/404/1.gif',
+        img: '//note-cdn.h2-o.xyz/404/1.gif',
         text: '卧槽！页面跟隔壁老王跑了'
     },
     {
-        img: '//note-cdn.hxtao.xyz/404/2.png',
+        img: '//note-cdn.h2-o.xyz/404/2.png',
         text: ''
     },
     {
-        img: '//note-cdn.hxtao.xyz/404/3.jpg',
+        img: '//note-cdn.h2-o.xyz/404/3.jpg',
         text: '好像页面不存在呢~'
     },
     {
-        img: '//note-cdn.hxtao.xyz/404/4.jpg',
+        img: '//note-cdn.h2-o.xyz/404/4.jpg',
         text: '卧槽！想干啥'
     }
 ];
