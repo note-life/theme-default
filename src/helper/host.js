@@ -1,1 +1,1 @@
-export default 'https://note-api.h2-o.xyz'
+export default 'https://note-api.hxtao.xyz'

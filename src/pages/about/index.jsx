@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from '@components/layout';
 import pageProgress from '@components/page-progress';
-import Comment from '@components/comment';
+// import Comment from '@components/comment';
 
 import CONFIG from '@config';
 
@@ -33,7 +33,7 @@ const AboutPage = () => {
                         <li>API 内容管理 Powered By <a href="https://github.com/note-life" target="_blank">Note.Life</a></li>
                     </ul>
                 </div>
-                <Comment title={'about'} />
+                {/* <Comment title={'about'} /> */}
             </Content>
         </Layout>
     );
