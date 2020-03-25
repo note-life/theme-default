@@ -5,7 +5,7 @@ const CopyRights = (props) => {
     useEffect(() => {
         const script = document.createElement('script');
 
-        script.src = '//note-cdn.hxtao.xyz/js/busuanzi.pure.mini.js';
+        script.src = '//note-cdn.h2-o.xyz/js/busuanzi.pure.mini.js';
         document.body.appendChild(script);
 
         return () => {

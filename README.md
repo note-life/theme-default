@@ -1,3 +1,3 @@
 # theme UI (0.0.1 🧟‍)
 
-[LIVE DEMO](https://note.hxtao.xyz)
+[LIVE DEMO](https://note.h2-o.xyz)
