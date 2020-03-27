@@ -47,5 +47,9 @@ module.exports = merge(baseWebpackConfig, {
             inject: true
         }),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    externals: {
+        "react": 'window.React',
+        "react-dom": 'window.ReactDOM'
+    }
 });

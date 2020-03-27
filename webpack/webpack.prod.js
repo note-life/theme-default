@@ -52,11 +52,11 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
         // runtimeChunk: {
         //     name: 'runtime'
         // }
+    },
+    externals: {
+        "react": 'window.React',
+        "react-dom": 'window.ReactDOM'
     }
-    // externals: {
-    //     "react": 'window.React',
-    //     "react-dom": 'window.ReactDOM'
-    // }
 });
 
 if (process.env.npm_lifecycle_event === 'analyze') {
