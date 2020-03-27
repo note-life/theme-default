@@ -1,26 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './index.pcss';
 
-const CopyRights = (props) => {
-    useEffect(() => {
-        const script = document.createElement('script');
-
-        script.src = '//note-cdn.hxtao.xyz/js/busuanzi.pure.mini.js';
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script);
-        };
-
-    }, true);
-
+const CopyRights = () => {
     return (
         <footer className="copy-rights">
             © {(new Date()).getFullYear()} <i className="iconfont icon-aixin"></i> _始於夏末_
-            <div className="busuanzi-couter">
-                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-                <span id="busuanzi_container_site_uv">总访客量<span id="busuanzi_value_site_uv"></span>次</span>
-                <span>备案号:浙ICP备17057854号-1</span>
+            <div className="gov-num">
+                <span>备案号:浙ICP备17057854号-3</span>
             </div>
         </footer>
     );

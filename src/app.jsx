@@ -1,3 +1,9 @@
+if ('serviceWorker' in navigator) {
+    window.onload = function() {
+        navigator.serviceWorker.register('/sw.js');
+    }
+}
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
