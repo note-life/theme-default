@@ -11,9 +11,10 @@ module.exports = merge(baseWebpackConfig, {
     devServer: {
         compress: true,
         hot: true,
-        host: 'localhost',
+        host: '0.0.0.0',
         port: 9001,
         open: true,
+        contentBase: path.resolve(__dirname, '../src/public'),
         // https: {
         //     key: fs.readFileSync(path.resolve(__dirname, '../ssl/key.pem')),
         //     cert: fs.readFileSync(path.resolve(__dirname, '../ssl/cert.pem')),

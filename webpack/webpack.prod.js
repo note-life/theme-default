@@ -4,6 +4,11 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HTMLPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CopyPlugin = require('copy-webpack-plugin');
+
+function resolvePath (value) {
+    return path.join(__dirname, '..', value);
+};
 
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
@@ -34,7 +39,6 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
         new HTMLPlugin({
             filename: 'index.html',
             template: 'index.html',
-            favicon: path.resolve(__dirname, '../assets/favicon.ico'),
             inject: true,
             minify: {
                 removeComments: true,
@@ -42,7 +46,10 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
                 removeAttributeQuotes: true
             },
             chunks: ['app', 'vendors']
-        })
+        }),
+        new CopyPlugin([
+            { from: resolvePath('src/public'), to: resolvePath('dist/') },
+        ]),
     ],
     optimization: {
         splitChunks: {

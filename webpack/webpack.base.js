@@ -17,7 +17,6 @@ const baseWebpackConfig = {
     },
     resolve: {
         alias: {
-            '@': resolvePath('src'),
             '@components': resolvePath('src/components'),
             '@assets': resolvePath('src/assets'),
             '@helper': resolvePath('src/helper'),
