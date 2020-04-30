@@ -12,7 +12,7 @@ module.exports = merge(baseWebpackConfig, {
         compress: true,
         hot: true,
         host: '0.0.0.0',
-        port: 9001,
+        port: 9002,
         open: true,
         contentBase: path.resolve(__dirname, '../src/public'),
         // https: {

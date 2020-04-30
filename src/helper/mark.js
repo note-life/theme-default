@@ -39,6 +39,8 @@ import 'prismjs/components/prism-kotlin';
 import 'prismjs/components/prism-ejs';
 import 'prismjs/components/prism-basic';
 
+import { replaceImg } from '@helper/utils';
+
 /**
  * Function mark 解析 markdown
  * @param {String} str: markdown string
@@ -46,6 +48,8 @@ import 'prismjs/components/prism-basic';
  * @returns {String}
  */
 function mark (str = '', target) {
+    str = replaceImg(str);
+
     Marked.setOptions({
         renderer: (() => {
             const renderer = new Marked.Renderer();

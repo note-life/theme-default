@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { replaceImg } from '@helper/utils';
 import './index.pcss';
 
 const Header = ({ className, bgImg, bgColor, children }) => {
@@ -13,10 +14,10 @@ const Header = ({ className, bgImg, bgColor, children }) => {
         setBgY(- (scrollY / 3));
     };
 
-    const style = { backgroundPositionY: bgY };
+    const style = { backgroundPositionY: window.parseInt(bgY) };
 
     if (bgImg) {
-        style.backgroundImage = `url(${bgImg})`;
+        style.backgroundImage = `url(${replaceImg(bgImg)})`;
     }
 
     if (bgColor) {

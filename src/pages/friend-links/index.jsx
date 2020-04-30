@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@components/layout';
 import pageProgress from '@components/page-progress';
+import { replaceImg } from '@helper/utils';
 import CONFIG from '@config';
 import API from '@api';
 
@@ -35,7 +36,7 @@ const FriendLinks = () => {
                     {
                         links.map(v => (
                             <a className="link-item" href={v.url} key={v.id} target="_blank">
-                                <div className="img"><img src={v.logo} alt=""/></div>
+                                <div className="img"><img src={replaceImg(v.logo)} alt=""/></div>
                                 <h1>{v.name}</h1>
                             </a>
                         ))

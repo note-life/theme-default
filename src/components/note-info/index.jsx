@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { dateDesc, formatDate } from '@helper/utils';
+import { dateDesc, formatDate, replaceImg } from '@helper/utils';
+
 
 import './index.pcss';
 
@@ -12,7 +13,7 @@ const NoteInfo = (props) => {
         <div className="note-info">
             <div className="row">
                 <Link to={`/author/${props.author._id}`}>
-                   {<img src={props.author.avator} className="avator" alt="avator"/>}
+                   {<img src={replaceImg(props.author.avator)} className="avator" alt="avator"/>}
                 </Link>
                 <div>
                     <span className="nickname">{props.author.nickname}</span>
