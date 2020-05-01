@@ -91,35 +91,58 @@ const dateDesc = (date) => {
 
 };
 
-const isSupportWebp = function () {
+function checkWebpFeature(feature = 'lossless') {
+    return new Promise((resolve, reject) => {
+        const kTestImages = {
+            lossy: "UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA",
+            lossless: "UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==",
+            alpha: "UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==",
+            animation: "UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA"
+        };
+
+        const img = new Image();
+    
+        img.src = "data:image/webp;base64," + kTestImages[feature];
+
+        img.onload = function () {
+            const result = (img.width > 0) && (img.height > 0);
+
+            resolve(result);
+        };
+    
+        img.onerror = function () {
+            resolve(false);
+        };
+    });
+}
+
+const webpCheck = async function () {
     if (typeof window.isSupportWebp === 'boolean') {
         return window.isSupportWebp;
     }
 
-    try {
-        const isSupportWebp = !document.createElement('canvas').toDataURL('image/webp', 0.5).indexOf('data:image/webp');
+    const isSupportWebp = await checkWebpFeature();
 
-        Object.defineProperty(window, 'isSupportWebp', {
-            value: isSupportWebp,
-            configurable: false,
-            writable: false
-        });
+    Object.defineProperty(window, 'isSupportWebp', {
+        value: isSupportWebp,
+        configurable: false,
+        writable: false
+    });
 
-        if (!isSupportWebp) {
-            alert('讲道理，ios 一直不支持 webp 格式的图片\n我也不是特别想支持 ios 🙄👎\n\n明明是对方的问题，凭啥要我将就？😡😡😡');
-            alert('但如果有一天你看到我将就了 🥺🥺🥺');
-            alert('或许...');
-            alert('这就是犯贱吧！🤔🤔🤔\n\n-----------\n\n部分背景透明的图片在转 jpeg 时默认黑色了，将就着看吧，或许这就是将就的代价吧~');
-        }
+    const ua = navigator.userAgent.toLowerCase();
 
-        return isSupportWebp;
-    } catch(err) {
-        return false;
+    if (!isSupportWebp && /safari/.test(ua) && !/chrome/.test(ua) ) {
+        alert('讲道理，ios 一直不支持 webp 格式的图片\n我也不是特别想支持 ios 🙄👎\n\n明明是对方的问题，凭啥要我将就？😡😡😡');
+        alert('但如果有一天你看到我将就了 🥺🥺🥺');
+        alert('或许...');
+        alert('这就是犯贱吧！🤔🤔🤔\n\n-----------\n\n部分背景透明的图片在转 jpeg 时默认黑色了，将就着看吧，或许这就是将就的代价吧~');
     }
+
+    return isSupportWebp;
 };
 
 const replaceImg = (str) => {
-    if (isSupportWebp() || !str) {
+    if (window.isSupportWebp || !str) {
         return str;
     }
 
@@ -127,4 +150,4 @@ const replaceImg = (str) => {
 };
 
 
-export { getUrlParams, param2string, formatDate, isEmail, getPicUrl, randomNum, dateDesc, replaceImg };
+export { getUrlParams, param2string, formatDate, isEmail, getPicUrl, randomNum, dateDesc, replaceImg, webpCheck };

@@ -7,7 +7,7 @@ if ('serviceWorker' in navigator) {
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import { webpCheck } from '@helper/utils';
 import HomePage from '@pages/home';
 import NotePage from '@pages/note';
 import NotesPage from '@pages/notes';
@@ -34,8 +34,14 @@ const App = () => (
     </Router>
 );
 
-ReactDOM.render(<App />, document.getElementById('app'));
+async function render() {
+    await webpCheck();
 
-if (module.hot) {
-    module.hot.accept();
+    ReactDOM.render(<App />, document.getElementById('app'));
+
+    if (module.hot) {
+        module.hot.accept();
+    }
 }
+
+render();
