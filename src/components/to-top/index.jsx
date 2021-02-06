@@ -18,7 +18,7 @@ const ToTop = (props) => {
         return () => {
             window.removeEventListener('scroll', scrollHandler, false);
         }
-    }, true);
+    }, []);
 
     if (!visible) return null;
 

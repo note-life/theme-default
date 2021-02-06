@@ -52,7 +52,7 @@ const NoteList = ({ query }) => {
 
     useEffect(() => {
         fetchNotes();
-    }, true);
+    }, []);
 
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler, false);

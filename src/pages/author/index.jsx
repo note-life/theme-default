@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState ,useEffect, useCallback } from 'react';
 import NoteList from '@components/note-list';
 import Layout from '@components/layout';
 import pageProgress from '@components/page-progress';
@@ -10,15 +10,15 @@ const { Header, Content } = Layout;
 
 const AuthorPage = ({ match }) => {
     const [ author, setAuthor ] = useState({});
-    const fetchAuthoInfo = async () => {
+    const fetchAuthoInfo = useCallback(async () => {
         pageProgress.start();
         setAuthor(await API.fetchAuthorInfo(match.params.id));
         pageProgress.done();
-    };
+    }, [setAuthor]);
 
     useEffect(() => {
         fetchAuthoInfo();
-    }, true);
+    }, [fetchAuthoInfo]);
 
     document.title = localStorage.getItem('title') || 'NOTE.LIFE';
 

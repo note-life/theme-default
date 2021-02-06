@@ -12,7 +12,7 @@ const { Header, Content } = Layout;
 
 const HomePage = () => {
     const [ siteInfo, setSiteInfo ] = useState({});
-    const fetchSiteInfo = async () => {
+    const fetchSiteInfo = useCallback(async () => {
         pageProgress.start()
         const siteInfo = await API.fetchSiteInfo();
         pageProgress.done();
@@ -20,11 +20,11 @@ const HomePage = () => {
         document.title = siteInfo.title;
         localStorage.setItem('title', siteInfo.title);
         setSiteInfo(siteInfo);
-    };
+    }, [setSiteInfo]);
 
     useEffect(() => {
         fetchSiteInfo();
-    }, true);
+    }, [fetchSiteInfo]);
 
     return (
         <Layout className="home-page">

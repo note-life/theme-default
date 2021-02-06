@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@components/layout';
 import ImgModal from '@components/img-modal';
@@ -17,17 +17,17 @@ const { Header, Content } = Layout;
 const NotePage = (props) => {
     const [ { prev, note = {}, next }, setNoteData ] = useState({});
     const [ bigImg, setBigImg ] = useState(null);
-    const handleClick = (e) => {
+    const handleClick = useCallback((e) => {
         const target = e.target;
 
         if (target.tagName === 'IMG' && target.getAttribute('alt') !== 'emoji') {
             setBigImg(target.getAttribute('src'));
         }
-    };
+    }, [setBigImg]);
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setBigImg(null);
-    };
+    }, [setBigImg]);
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -47,7 +47,7 @@ const NotePage = (props) => {
         };
 
         fetchNote();
-    }, props.match.params.id);
+    }, [props.match.params.id]);
 
     return (
         <Layout className="note-page">

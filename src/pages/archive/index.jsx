@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@components/layout';
 import Loading from '@components/loading';
@@ -42,21 +42,10 @@ const ArchivePage = () => {
     const [ { total, notes, pageNo }, setData ] = useState({});
 
     /**
-     * 下拉加载
-     */
-    const scrollHandler = () => {
-        const { scrollY } = window;
-
-        if (document.documentElement.clientHeight + scrollY > document.body.scrollHeight - 200) {
-            fetchArchive(pageNo + 1);
-        }
-    };
-
-    /**
      * 获取归档
      * @param {Number} pageNo 
      */
-    const fetchArchive = async (pageNo = 1) => {
+    const fetchArchive = useCallback(async (pageNo = 1) => {
 
         if ((notes && total <= notes.length)|| loading) return;
 
@@ -71,19 +60,30 @@ const ArchivePage = () => {
             pageNo: pageNo,
             notes: pageNo === 1 ? res.notes || [] : (notes || []).concat(res.notes || [])
         });
-    };
+    }, [setLoading, setData]);
+
+    /**
+     * 下拉加载
+     */
+    const scrollHandler = useCallback(() => {
+        const { scrollY } = window;
+
+        if (document.documentElement.clientHeight + scrollY > document.body.scrollHeight - 200) {
+            fetchArchive(pageNo + 1);
+        }
+    }, [fetchArchive]);
 
     useEffect(() => {
         fetchArchive();
-    }, true);
+    }, [fetchArchive]);
 
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler, false);
 
         return () => {
             window.removeEventListener('scroll', scrollHandler, false);
-        }
-    }, null);
+        };
+    }, [scrollHandler]);
 
     document.title = localStorage.getItem('title') || 'NOTE.LIFE';
 

@@ -30,7 +30,7 @@ const Header = ({ className, bgImg, bgColor, children }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll, false);
         }
-    }, true);
+    }, []);
 
     return (
         <header className={`global-header ${className}`} style={style}>

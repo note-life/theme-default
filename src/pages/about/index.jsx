@@ -19,7 +19,7 @@ const AboutPage = () => {
         }, 100);
 
         document.title = localStorage.getItem('title') || 'NOTE.LIFE';
-    }, true);
+    }, []);
 
     return (
         <Layout className="about-page">
