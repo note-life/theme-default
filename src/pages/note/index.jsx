@@ -4,7 +4,7 @@ import Layout from '@components/layout';
 import ImgModal from '@components/img-modal';
 import MarkdownPreview from '@components/markdown-preview';
 import NoteInfo from '@components/note-info';
-// import Comment from '@components/comment';
+import DisqusComment from '@components/disqus-comment';
 import ExpirationPrompt from '@components/expiration-prompt';
 import pageProgress from '@components/page-progress';
 
@@ -64,7 +64,7 @@ const NotePage = (props) => {
                     {prev && <Link to={`/notes/${prev._id}`} className="prev"><i className="iconfont icon-prev"></i>{prev.title}</Link>}
                     {next && <Link to={`/notes/${next._id}`} className="next">{next.title}<i className="iconfont icon-next"></i></Link>}
                 </div>
-                {/* <Comment title={note.title} /> */}
+                <DisqusComment id={note._id} />
             </Content>
             <ImgModal visible={!!bigImg} url={bigImg} onClose={handleClose}>
                 <img src={bigImg} alt="bigImg" />
