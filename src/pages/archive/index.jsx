@@ -75,7 +75,7 @@ const ArchivePage = () => {
 
     useEffect(() => {
         fetchArchive();
-    }, [fetchArchive]);
+    }, []);
 
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler, false);
