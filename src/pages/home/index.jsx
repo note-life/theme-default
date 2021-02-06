@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import NoteList from '@components/note-list';
 import Layout from '@components/layout';
 import pageProgress from '@components/page-progress';
