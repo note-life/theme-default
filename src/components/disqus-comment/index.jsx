@@ -5,7 +5,7 @@ function insertDisqusScript() {
     const script = document.createElement('script');
 
     script.id = 'disqus';
-    script.src = 'https://shi-yu-xia-mo-note.disqus.com/embed.js';
+    script.src = 'https://note-hxtao.disqus.com/embed.js';
     script.setAttribute('data-timestamp', +new Date());
     document.body.appendChild(script);
 }
