@@ -23,7 +23,7 @@ const FriendLinks = () => {
 
         fetchFriendLinks();
         document.title = localStorage.getItem('title') || 'NOTE.LIFE';
-    }, true);
+    }, []);
 
     return (
         <Layout className="friend-links-page">
