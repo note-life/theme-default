@@ -18,7 +18,7 @@ const AuthorPage = ({ match }) => {
 
     useEffect(() => {
         fetchAuthoInfo();
-    }, [fetchAuthoInfo]);
+    }, []);
 
     document.title = localStorage.getItem('title') || 'NOTE.LIFE';
 

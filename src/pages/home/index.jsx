@@ -24,7 +24,7 @@ const HomePage = () => {
 
     useEffect(() => {
         fetchSiteInfo();
-    }, [fetchSiteInfo]);
+    }, []);
 
     return (
         <Layout className="home-page">
