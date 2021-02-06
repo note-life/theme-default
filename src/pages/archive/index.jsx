@@ -60,7 +60,7 @@ const ArchivePage = () => {
             pageNo: pageNo,
             notes: pageNo === 1 ? res.notes || [] : (notes || []).concat(res.notes || [])
         });
-    }, [setLoading, setData]);
+    }, [setLoading, setData, total, notes, loading]);
 
     /**
      * 下拉加载
