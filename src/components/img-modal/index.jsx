@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { generateImgPath } from '@helper/utils';
 import './index.pcss';
 
 class ImgModal extends React.Component {
@@ -34,8 +35,10 @@ class ImgModal extends React.Component {
         }
     }
 
-    openNewTab = () => {
-        window.open(this.props.url);
+    openNewTab = async () => {
+        const { origin, common } = generateImgPath(this.props.url);
+
+        window.open(origin || common);
     }
 
     componentWillUnmount() {
@@ -50,7 +53,7 @@ class ImgModal extends React.Component {
                     <div className="img">{this.props.children}</div>
                     <div className="menus">
                         <div className="close" onClick={this.props.onClose}>关闭</div>
-                        <div className="origin" onClick={this.openNewTab}>原图</div>
+                        <div className="origin" onClick={this.openNewTab}>大图</div>
                     </div>
                 </>,
                 this.el

@@ -7,6 +7,7 @@ import NoteInfo from '@components/note-info';
 import DisqusComment from '@components/disqus-comment';
 import ExpirationPrompt from '@components/expiration-prompt';
 import pageProgress from '@components/page-progress';
+import { generateImgPath } from '@helper/utils';
 
 import API from '@api';
 
@@ -21,7 +22,9 @@ const NotePage = (props) => {
         const target = e.target;
 
         if (target.tagName === 'IMG' && target.getAttribute('alt') !== 'emoji') {
-            setBigImg(target.getAttribute('src'));
+            const { common, origin, size } = generateImgPath(target.getAttribute('src'));
+
+            setBigImg(origin || common);
         }
     }, [setBigImg]);
 

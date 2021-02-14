@@ -39,7 +39,23 @@ import 'prismjs/components/prism-kotlin';
 import 'prismjs/components/prism-ejs';
 import 'prismjs/components/prism-basic';
 
-import { replaceImg } from '@helper/utils';
+import { replaceImg, generateImgPath } from '@helper/utils';
+
+function transforSrc(src) {
+    return src.replace('note-cdn.hxtao.xyz', 'oss.h2-o.xyz')
+}
+
+function generateImgTag(src, alt) {
+    const { common, thumbnail, origin, size } = generateImgPath(transforSrc(src));
+
+    if (/\.svg$/.test(common)) {
+        return `<img class="" src="${common}" alt="${alt}">`
+    }
+
+    const sizeStr = size ? `width="${size[0]}"` : '';
+
+    return `<img class="lazy-img" src="${thumbnail || common}" alt="${alt}" data-src="${common}" ${sizeStr}>`
+}
 
 /**
  * Function mark 解析 markdown
@@ -69,6 +85,7 @@ function mark (str = '', target) {
                     return `<img src="${src}" alt="${alt}" class="self-emoji">`;
                 } else {
                     let cls = '';
+                    const imgTag = generateImgTag(src, alt);
 
                     if (/no-shadow$/.test(alt)) {
                         cls = 'no-shadow';
@@ -77,10 +94,10 @@ function mark (str = '', target) {
                     }
 
                     if (alt === 'img') {
-                        return `<div class="n-img ${cls}"><img src="${src}" alt="${alt}"></div>`;
+                        return `<div class="n-img ${cls}">${imgTag}</div>`;
                     }
 
-                    return `<div class="n-img ${cls}"><img src="${src}" alt="${alt}"><p>${alt}<p></div>`;
+                    return `<div class="n-img ${cls}">${imgTag}<p>${alt}<p></div>`;
                 }
             }
 

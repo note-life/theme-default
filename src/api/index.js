@@ -68,7 +68,7 @@ class API {
             return [];
         }
 
-        return res[0] && res[0].options;
+        return res && res.options;
     }
 
     /**
@@ -82,7 +82,7 @@ class API {
             return {};
         }
 
-        return res[0] ? res[0].options : {};
+        return res ? res.options : {};
     }
 
     /**

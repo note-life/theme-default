@@ -149,5 +149,50 @@ const replaceImg = (str) => {
     return str.replace(/\.webp/g, '.jpeg');
 };
 
+const generateImgPath = (imgPath) => {
+    const splitResult = imgPath.split('/');
+    const [name, sizeStr] = splitResult.pop().split('.')[0].split('_');
+    const typeEnum = {
+        'z1': 'gif',
+        'z2': 'jpg',
+        'z3': 'jpeg',
+        'z5': 'png',
+        'z6': 'webp',
+        'z7': 'avif',
+        'z8': 'svg'
+    };
 
-export { getUrlParams, param2string, formatDate, isEmail, getPicUrl, randomNum, dateDesc, replaceImg, webpCheck };
+    const extTypeTag = name.slice(-2);
+    const isValidExtTypeTag = /z[1-8]/.test(extTypeTag);
+
+    if (!isValidExtTypeTag) {
+        return {
+            common: imgPath
+        };
+    }
+
+    let originPath = '';
+
+    for(let i = 0; i < splitResult.length; i++) {
+        originPath = originPath + splitResult[i] + '/';
+    }
+
+    if (window.isSupportWebp) {
+        return {
+            size: sizeStr?.match(/\d{1,}/g),
+            common: imgPath.replace(/\.(jpg|jpeg|png|webp)/, '.webp'),
+            thumbnail: imgPath.replace('images', 'thumbnails').replace(/\.(jpg|jpeg|png|webp)/, '.webp'),
+            origin: `${originPath}${name.slice(0, -2)}_${sizeStr}.${typeEnum[extTypeTag]}`
+        };
+    }
+
+    return {
+        size: sizeStr?.match(/\d{1,}/g),
+        common: imgPath,
+        thumbnail: imgPath.replace('images', 'thumbnails'),
+        origin: `${originPath}${name.slice(0, -2)}_${sizeStr}.${typeEnum[extTypeTag]}`
+    };
+};
+
+
+export { getUrlParams, param2string, formatDate, isEmail, getPicUrl, randomNum, dateDesc, replaceImg, webpCheck, generateImgPath };

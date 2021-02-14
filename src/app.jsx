@@ -17,6 +17,8 @@ import AuthorPage from '@pages/author';
 import AboutPage from '@pages/about';
 import NotFound from '@pages/404';
 
+import './helper/lazy-img';
+
 import './app.pcss';
 
 const App = () => (

@@ -72,11 +72,16 @@
     }
 
     img{
-        cursor: pointer
+        cursor: pointer;
+        transition: filter .2s ease;
     }
 
     img[alt=emoji]{
         cursor: default;
+    }
+
+    .lazy-img{
+        filter: blur(2px);
     }
 
     .emojione{
