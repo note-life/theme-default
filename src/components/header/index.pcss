@@ -4,10 +4,6 @@ header.global-header{
     width: 100vw;
     height: 55vh;
     background-color: var(--primaryColor);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 0px;
-    background-attachment: fixed;
     color: #fff;
     text-align: center;
     box-sizing: border-box;
@@ -33,6 +29,30 @@ header.global-header{
                 margin: 0 .2rem 0 0;
                 font-size: .88rem;
             }
+        }
+    }
+
+    .wrapper-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 0px;
+        background-attachment: fixed;
+        z-index: 99;
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        transition: transform .56s ease, blur .56s ease, opacity .56s ease;
+        transform-origin: center;
+
+        &.blur{
+            opacity: .8;
+            filter: blur(2px);
+            transform: scale(1.04);
         }
     }
 

@@ -4,6 +4,7 @@ import './index.pcss';
 
 const Header = ({ className, bgImg, bgColor, children }) => {
     const [ bgY, setBgY ] = useState();
+    const [ loading, setLoading ] = useState(true);
     const [ imgSrc, setImgSrc ] = useState();
 
     const handleScroll = () => {
@@ -27,6 +28,7 @@ const Header = ({ className, bgImg, bgColor, children }) => {
 
     const lazyLoad = useCallback((imgPath) => {
         if (!imgPath) {
+            setImgSrc('');
             return;
         }
 
@@ -35,6 +37,7 @@ const Header = ({ className, bgImg, bgColor, children }) => {
 
         if (!thumbnail) {
             setImgSrc(common);
+            setLoading(false);
             return;
         }
 
@@ -42,6 +45,7 @@ const Header = ({ className, bgImg, bgColor, children }) => {
 
         image.onload = () => {
             setImgSrc(origin);
+            setLoading(false);
             image.onload = null;
         };
 
@@ -49,9 +53,10 @@ const Header = ({ className, bgImg, bgColor, children }) => {
 
         if (image.complete && image.src) {
             setImgSrc(origin);
+            setLoading(false);
         }
 
-    }, [setImgSrc]);
+    }, [setImgSrc, setLoading]);
 
     useEffect(() => {
         lazyLoad(bgImg);
@@ -66,7 +71,8 @@ const Header = ({ className, bgImg, bgColor, children }) => {
     }, []);
 
     return (
-        <header className={`global-header ${className}`} style={style}>
+        <header className={`global-header ${className}`}>
+            <div className={`wrapper-bg ${loading ? 'blur' : ''}`} style={style} />
             <div className="content">
                 {children}
             </div>

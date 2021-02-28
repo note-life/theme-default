@@ -1,7 +1,5 @@
 const imgsStore = [];
 
-window.imgsStore = imgsStore
-
 function handleImg(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -15,12 +13,10 @@ function handleImg(entries, observer) {
             }
 
             if (img.complete && img.src) {
-                console.log('from cache.', img);
                 onLoaded();
             }
 
             img.onload = function() {
-                console.log('from network.');
                 onLoaded();
                 img.onload = null;
             };
