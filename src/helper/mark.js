@@ -72,11 +72,16 @@ function mark (str = '', target) {
                         alt = alt.slice(0, -'no-shadow'.length);
                     }
 
+                    const result = alt.match(/\{\{?.*\}\}/g);
+                    const styles = (result && result[0]) ? result[0].slice(2, -2) : {};
+
+                    alt = alt.replace(/\{\{?.*\}\}/g, '');
+
                     if (alt === 'img') {
-                        return `<div class="n-img ${cls}"><img src="${src}" alt="${alt}"></div>`;
+                        return `<div class="n-img ${cls}" style="${styles}"><img src="${src}" alt="${alt}"></div>`;
                     }
 
-                    return `<div class="n-img ${cls}"><img src="${src}" alt="${alt}"><p>${alt}<p></div>`;
+                    return `<div class="n-img ${cls}" style="${styles}"><img src="${src}" alt="${alt}"><p>${alt}<p></div>`;
                 }
             }
 
