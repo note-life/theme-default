@@ -52,9 +52,14 @@ function generateImgTag(src, alt) {
         return `<img class="" src="${common}" alt="${alt}">`
     }
 
-    const sizeStr = size ? `width="${size[0]}"` : '';
+    const result = alt.match(/\{\{?.*\}\}/g);
+    const styles = (result && result[0]) ? result[0].slice(2, -2) : {};
+    const isExistWidth = /width:.*?/.test(styles);
+    const sizeStr = (size && !isExistWidth) ? `width="${size[0]}"` : '';
 
-    return `<img class="lazy-img" src="${thumbnail || common}" alt="${alt}" data-src="${common}" ${sizeStr}>`
+    alt = alt.replace(/\{\{?.*\}\}/g, '');
+
+    return `<img style="${styles}" class="lazy-img" src="${thumbnail || common}" alt="${alt}" data-src="${common}" ${sizeStr}>`
 }
 
 /**
@@ -92,6 +97,8 @@ function mark (str = '', target) {
 
                         alt = alt.slice(0, -'no-shadow'.length);
                     }
+
+                    alt = alt.replace(/\{\{?.*\}\}/g, '');
 
                     if (alt === 'img') {
                         return `<div class="n-img ${cls}">${imgTag}</div>`;
